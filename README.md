@@ -102,6 +102,13 @@ npx shadcn@latest info
 - `src/components/`: Playground and launcher UI components.
 - `src/components/ui/`: Reusable shadcn/ui primitives, managed by the `shadcn/ui` CLI.
 
+### GitHub Actions
+
+- On pushes and pull requests, run CI check and build tasks.
+- On Git tags matching `v*`, build `dist/`, uploads it as a Pages artifact, and deploys it with GitHub Pages.
+
+The GitHub Pages deployment workflow sets `VITE_BASE_PATH` from the `base_path` output of `actions/configure-pages`, and Vite reads that environment variable in its config so project-site deployments generate asset URLs under the correct repository path automatically.
+
 ### License
 
 Dual-licensed under Apache-2.0 and MIT. See `LICENSE-APACHE` and `LICENSE-MIT`.
