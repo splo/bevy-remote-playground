@@ -5,6 +5,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { cn } from '@/lib/utils'
 import logo from '@/assets/logo.svg'
 
+const DEMO_JS_URL = `${import.meta.env.BASE_URL}wasm/demo.js`
+
 export type AppSource = {
     jsUrl: string
     wasmUrl?: string
@@ -29,7 +31,7 @@ export function Launcher({ onLoad, loading = false, error }: Props) {
 
     function handleLoad() {
         if (selected === 'demo') {
-            onLoad({ jsUrl: '/wasm/demo.js', canvasSelector: '#bevy-canvas' })
+            onLoad({ jsUrl: DEMO_JS_URL, canvasSelector: '#bevy-canvas' })
         } else {
             if (!jsFile || !wasmFile) return
             onLoad({

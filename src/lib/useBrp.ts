@@ -72,7 +72,11 @@ export function useBrp(): BrpLoader {
         setStatus({ type: 'loading' })
         let jsBlobUrl: string | null = null
         try {
-            const jsBlob = await fetch(jsUrl).then((r) => r.blob())
+            const response = await fetch(jsUrl)
+            if (!response.ok) {
+                throw new Error(`Failed to load JS module: ${jsUrl} (${response.status} ${response.statusText})`)
+            }
+            const jsBlob = await response.blob()
             jsBlobUrl = URL.createObjectURL(jsBlob)
             const mod = await import(/* @vite-ignore */ jsBlobUrl) as WasmModule
             const resolvedWasmUrl = wasmUrl ?? jsUrl.replace(/\.js$/, '_bg.wasm')
