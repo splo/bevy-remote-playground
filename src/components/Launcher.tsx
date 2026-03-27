@@ -5,7 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { cn } from '@/lib/utils'
 import logo from '@/assets/logo.svg'
 
-const DEMO_JS_URL = `${import.meta.env.BASE_URL}wasm/demo.js`
+const DEMO_JS_URL = `${import.meta.env.BASE_URL}/wasm/demo.js`
 
 export type AppSource = {
     jsUrl: string
