@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react'
-import type { BrpBridge, InstantMethod, StopWatchingFn } from '@wasm/demo'
+import type { BrpBridge, BuiltInBrpBridge, InstantMethod, StopWatchingFn } from '@wasm/demo'
 
 export type {
     BrpBridge,
@@ -31,12 +31,6 @@ export type BrpRpcDiscoverResult = {
         name: string
         params: unknown[]
     }[]
-}
-
-/** BRP bridge with the `rpc.discover` method. */
-export type OpenRpcBrpBridge = BrpBridge & {
-    /** Returns an OpenRPC discovery document. */
-    'rpc.discover': InstantMethod<undefined, BrpRpcDiscoverResult>
 }
 
 export type BrpStatus =

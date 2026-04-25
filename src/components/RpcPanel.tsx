@@ -55,7 +55,7 @@ export function RpcPanel({ bridge, methodNames }: Props) {
             return
         }
         try {
-            const result = await bridge[effectiveMethod](parsedParams, (callbackResult: unknown) => {
+            const result = await bridge.main[effectiveMethod](parsedParams, (callbackResult: unknown) => {
                 setCallResult(JSON.stringify(callbackResult, null, 2))
             })
             if (isStopWatching(result)) {

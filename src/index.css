@@ -3,6 +3,8 @@
 @import "shadcn/tailwind.css";
 @import "@fontsource-variable/geist";
 
+@source not "../demo";
+
 /* Hide all canvases by default; BevyCanvas shows them once placed in the container. */
 canvas {
   display: none;

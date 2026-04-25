@@ -5,8 +5,12 @@
   "type": "module",
   "scripts": {
     "watch": "run-p watch:*",
+    "prewatch": "npm run build:demo",
     "watch:web": "vite",
-    "build": "npm run build:web",
+    "watch:demo": "chokidar \"demo/**/*.rs\" \"demo/Cargo.toml\" -c \"npm run build:demo\"",
+    "build": "run-s build:demo build:web",
+    "prebuild:demo": "cargo build --manifest-path demo/Cargo.toml --target wasm32-unknown-unknown --release",
+    "build:demo": "wasm-bindgen --target web --out-dir public/wasm --out-name demo demo/target/wasm32-unknown-unknown/release/demo.wasm",
     "build:web": "vite build",
     "check": "run-p check:*",
     "check:types": "tsc -b",
@@ -17,7 +21,8 @@
     "prepreview": "npm run build",
     "preview:serve": "vite preview",
     "clean": "run-p clean:*",
-    "clean:web": "rimraf dist"
+    "clean:web": "rimraf dist",
+    "clean:demo": "rimraf demo/target public/wasm"
   },
   "dependencies": {
     "@base-ui/react": "^1.2.0",

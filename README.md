@@ -8,7 +8,7 @@ Open the published site: <https://splo.github.io/bevy-remote-playground>.
 
 You’ll land on a launcher with two options:
 
-- Demo: this loads the bundled demo WASM app shipped in `public/wasm`.
+- Demo: this loads the [demo](./demo/) Bevy WASM app.
 - Custom: this allows to load your own app.
 
 ### Custom App Requirements
@@ -30,11 +30,15 @@ To load your own app:
 
 This is a [Vite](https://vite.dev/) + [React](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/) + [shadcn/ui](https://ui.shadcn.com/) + [Tailwind](https://tailwindcss.com/) web application.
 
+The code is split between the `demo` Bevy application and the `web` UI.
+
 ### Setup
 
 Requirements:
 
 - [Node.js](https://nodejs.org/).
+- [Rust](https://rustup.rs/).
+- [wasm-bindgen](https://github.com/wasm-bindgen/wasm-bindgen).
 
 Install dependencies:
 
@@ -48,7 +52,8 @@ npm install
 npm run watch
 ```
 
-Starts a Vite server serving the web UI.
+- Starts a Vite server serving the web UI.
+- Builds the demo for `wasm32-unknown-unknown`, runs `wasm-bindgen` into `public/wasm`, and watches the Rust sources so updates to the demo source automatically rebuild the demo WASM.
 
 ### Check and Lint
 
@@ -76,9 +81,9 @@ npm run preview
 npm run build
 ```
 
-This builds the web UI into a `dist/` directory ready for production deployment.
+This builds the demo WASM files then the web UI files into a `dist/` directory ready for production deployment.
 
-Vite copies files from `public/` into `dist/`, including the bundled demo WASM files from `public/wasm`.
+Vite copies files from `public/` into `dist/`, including the demo WASM files.
 
 ### Clean Generated Files
 
@@ -96,7 +101,7 @@ npx shadcn@latest info
 
 ### Project layout
 
-- `public/wasm/`: Bundled demo WASM assets included with the site.
+- `demo/`: Bevy WASM demo application.
 - `src/`: React application entrypoint and styles.
 - `src/lib/`: Canvas and BRP integration utilities. [`useBrp.ts`](./src/lib/useBrp.ts) defines a somewhat reusable React function that allows to easily load the typed BRP bridge object.
 - `src/components/`: Playground and launcher UI components.
