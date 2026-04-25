@@ -29,6 +29,9 @@ jobs:
           target: wasm32-unknown-unknown
           rustflags: ""
 
+      - name: Install wasm-bindgen-cli
+        run: cargo install wasm-bindgen-cli
+
       - name: Set up Node.js
         uses: actions/setup-node@v6
         with:
