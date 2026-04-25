@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react'
-import type { BrpBridge, BuiltInBrpBridge, InstantMethod, StopWatchingFn } from '@wasm/demo'
+import type { BrpBridge, StopWatchingFn } from '@wasm/demo'
 
 export type {
     BrpBridge,
