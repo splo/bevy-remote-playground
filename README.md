@@ -1,6 +1,6 @@
 # <img alt="Bevy Remote Playground Logo" src="./public/icon.svg" width="32"> Bevy Remote Playground
 
-A small web UI for running [Bevy](https://bevy.org/) WebAssembly applications in the browser and interacting with them through the [Bevy Remote Protocol](https://docs.rs/bevy/latest/bevy/remote/) (BRP). Applications require the Bevy Remote WASM plugin.
+A small web UI for running [Bevy](https://bevy.org/) WebAssembly applications in the browser and interacting with them through the [Bevy Remote Protocol](https://docs.rs/bevy/latest/bevy/remote/) (BRP). Applications require the [Bevy Remote WASM](https://github.com/splo/bevy_remote_wasm) plugin.
 
 ## Usage
 
