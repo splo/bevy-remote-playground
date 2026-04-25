@@ -12,6 +12,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
+      - name: Setup Rust toolchains
+        uses: actions-rust-lang/setup-rust-toolchain@v1
+        with:
+          target: wasm32-unknown-unknown
+          rustflags: ""
+
       - name: Set up Node.js
         uses: actions/setup-node@v6
         with:
